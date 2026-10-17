@@ -1,0 +1,233 @@
+/* ManoRagini Programme */
+
+.manoragini-section {
+    padding: 80px 0;
+    background-color: var(--plum-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.manoragini-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.manoragini-intro .common-title h6 {
+    color: var(--text-on-dark);
+}
+
+.manoragini-intro .common-title h2 {
+    color: var(--text-on-dark);
+    margin-bottom: 0;
+    font-size: 44px;
+    line-height: 1.3;
+    text-wrap: nowrap;
+}
+
+.manoragini-description {
+    margin-bottom: 0;
+    padding-top: 4px;
+    color: var(--text-on-dark-muted);
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.manoragini-image {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+}
+
+/* Feature Cards */
+
+.manoragini-features {
+    row-gap: 0;
+
+}
+
+.manoragini-feature-col {
+    display: flex;
+
+}
+
+.manoragini-feature-col:nth-child(-n + 2) {
+    border-top: 0;
+}
+
+.manoragini-feature-col:nth-child(odd) {
+    padding-right: 24px;
+}
+
+.manoragini-feature-col:nth-child(even) {
+    padding-left: 24px;
+    /* border-left: 1px solid rgba(250, 246, 239, 0.2); */
+}
+
+.manoragini-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding: 20px 0 28px;
+    border-top: none;
+}
+
+.manoragini-feature.has-border-top {
+    border-top: 1px solid rgba(250, 246, 239, 0.2);
+}
+
+.manoragini-feature h3 {
+    margin: 0;
+    color: var(--text-on-dark);
+    font-family: var(--heading-font);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.manoragini-feature p {
+    margin: 0;
+    color: rgba(250, 246, 239, 0.7);
+    font-size: 15px;
+    line-height: 24px;
+}
+
+/* Actions */
+
+.manoragini-actions {
+    margin-top: 40px;
+}
+
+.manoragini-actions .common-btn {
+    flex-shrink: 0;
+}
+
+
+.manoragini-vector {
+    display: none;
+}
+
+@media (min-width: 1023px) {
+    .manoragini-vector {
+        display: block;
+        position: absolute;
+        width: 214.44px;
+        height: 224.92px;
+        left: 90%;
+        top: 77%;
+        transform: matrix(-0.03, 1, 1, 0.03, 0, 0);
+        z-index: 5;
+        pointer-events: none;
+        overflow-x: hidden;
+    }
+
+    .manoragini-vector svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .manoragini-intro .common-title h2 {
+        text-wrap: wrap;
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width: 991px) {
+    .manoragini-section {
+        padding: 60px 0;
+    }
+
+    .manoragini-intro {
+        gap: 20px;
+    }
+
+    .manoragini-intro .common-title h2 {
+        font-size: 35px;
+    }
+
+    .manoragini-content {
+        margin-top: 12px;
+    }
+
+    .manoragini-actions {
+        margin-top: 28px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 575px) {
+    .manoragini-section {
+        padding: 40px 0;
+    }
+
+    .manoragini-intro .common-title h2 {
+        font-size: 31px;
+    }
+
+    .manoragini-description {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    /* Keep all four cards in a 2 × 2 grid */
+    /* .manoragini-feature-col:nth-child(-n + 2) {
+        border-top: 1px solid rgba(250, 246, 239, 0.2);
+    } */
+
+    .manoragini-feature-col:nth-child(odd) {
+        padding-right: 12px;
+    }
+
+    .manoragini-feature-col:nth-child(even) {
+        padding-left: 12px;
+    }
+
+    .manoragini-feature {
+        gap: 8px;
+        padding: 16px 0 20px;
+    }
+
+    .manoragini-feature h3 {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .manoragini-feature p {
+        font-size: 13px;
+        line-height: 21px;
+    }
+
+    .manoragini-actions {
+        align-items: stretch !important;
+        gap: 12px !important;
+        margin-top: 24px;
+    }
+
+    .manoragini-actions .common-btn {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 900px) {
+    .manoragini-section .col-lg-7 {
+        padding-left: 10px !important;
+    }
+
+    .manoragini-content {
+        padding-left: 10px !important;
+    }
+
+    .manoraginiImage {
+        display: flex;
+        justify-content: center;
+    }
+}

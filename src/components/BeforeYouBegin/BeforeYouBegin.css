@@ -1,0 +1,200 @@
+/* Before You Begin */
+
+.before-you-begin {
+    padding: 70px 0;
+    background: rgba(251, 247, 240, 0.5);
+    border-top: 1px solid var(--border-color);
+}
+
+.before-you-begin-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.before-you-begin-intro .common-title h6 {
+    color: var(--burgundy-color);
+}
+
+.before-you-begin-intro .common-title h2 {
+    margin-bottom: 0;
+    color: var(--heading-color);
+    font-size: 44px;
+    line-height: 1.3;
+}
+
+.before-you-begin-intro>p {
+    margin: -20px 0 0;
+    color: var(--text-color);
+    font-size: 17px;
+    line-height: 28px;
+}
+
+/* Accordion */
+
+.before-you-begin-accordion {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    background: transparent;
+}
+
+.before-you-begin-accordion .accordion-item {
+    border: 0;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    background: transparent;
+}
+
+.before-you-begin-accordion .accordion-item:last-child {
+    border-bottom: 0;
+}
+
+.before-you-begin-accordion .accordion-header {
+    margin: 0;
+}
+
+.before-you-begin-accordion .accordion-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 20px 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--text-dark);
+    font-family: var(--heading-font);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: left;
+}
+
+/* .before-you-begin-accordion .accordion-button:focus {
+    box-shadow: none;
+    outline: 2px solid var(--border-plum);
+    outline-offset: 2px;
+} */
+
+.before-you-begin-accordion .accordion-button::after {
+    display: none;
+}
+
+/* Custom plus/minus icon */
+
+.before-you-begin-accordion .accordion-icon {
+    position: relative;
+    display: inline-block;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    color: var(--muted-plum);
+}
+
+.before-you-begin-accordion .accordion-icon::before,
+.before-you-begin-accordion .accordion-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+    transition: transform 0.25s ease;
+}
+
+/* Second line creates the plus sign when closed */
+.before-you-begin-accordion .accordion-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* Both lines rotate diagonally to form a proper cross */
+.before-you-begin-accordion .accordion-button:not(.collapsed) .accordion-icon::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.before-you-begin-accordion .accordion-button:not(.collapsed) .accordion-icon::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Answer */
+
+.before-you-begin-accordion .accordion-body {
+    padding: 0 40px 24px 0;
+}
+
+.before-you-begin-accordion .accordion-body p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+/* Tablet */
+
+@media (max-width: 991px) {
+    .before-you-begin {
+        padding: 60px 0;
+    }
+
+    .before-you-begin-intro {
+        gap: 24px;
+    }
+
+    .before-you-begin-intro .common-title h2 {
+        font-size: 35px;
+    }
+
+    .before-you-begin-intro>p {
+        margin-top: -12px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 575px) {
+    .before-you-begin {
+        padding: 40px 0;
+    }
+
+    .before-you-begin-intro {
+        gap: 20px;
+    }
+
+    .before-you-begin-intro .common-title h2 {
+        font-size: 30px;
+    }
+
+    .before-you-begin-intro>p {
+        margin-top: -8px;
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .before-you-begin-accordion {
+        margin-top: 12px;
+    }
+
+    .before-you-begin-accordion .accordion-button {
+        gap: 14px;
+        padding: 18px 0;
+        font-size: 17px;
+        line-height: 26px;
+    }
+
+    .before-you-begin-accordion .accordion-body {
+        padding: 0 0 20px;
+    }
+
+    .before-you-begin-accordion .accordion-body p {
+        font-size: 14px;
+        line-height: 23px;
+    }
+}

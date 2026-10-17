@@ -1,0 +1,679 @@
+/* =========================================================
+   Unique Pathway — index.css
+   Design tokens + base + reusable components
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+/* =========================================
+   ROOT VARIABLES
+   Load AFTER Bootstrap CSS
+========================================= */
+
+:root {
+  /* Brand Colors */
+  --primary-color: #CA8327;
+  --primary-dark: #B87420;
+  --plum-color: #48213F;
+  --plum-dark: #46183F;
+  --plum-deep: #2C1430;
+  --burgundy-color: #6E1423;
+  --burgundy-light: #7A1E27;
+  --gold-color: #E0A043;
+  --muted-plum: #7B4D74;
+
+  /* Text Colors */
+  --heading-color: #48213F;
+  --text-color: #665C6B;
+  --text-warm: #6B5A5C;
+  --text-dark: #29262B;
+  --text-on-dark: #FAF6EF;
+  --text-on-dark-muted: rgba(250, 246, 239, 0.75);
+
+  /* Background Colors */
+  --bg-white: #FFFFFF;
+  --bg-page: #FFFDFC;
+  --bg-cream: #F6EFE5;
+  --bg-sand: #F2E9DF;
+  --bg-dark: #48213F;
+  --bg-footer: #46183F;
+
+  /* Borders */
+  --border-color: #E3D7C5;
+  --border-form: #E7DCCB;
+  --border-plum: rgba(75, 36, 71, 0.3);
+  --border-burgundy: rgba(110, 20, 35, 0.3);
+  --border-on-dark: rgba(250, 246, 239, 0.4);
+
+  /* Service Card Themes */
+  --terracotta-bg: #FDF5EF;
+  --terracotta-border: #F1D2C4;
+  --terracotta-text: #BD5A3D;
+
+  --sage-bg: #F0F6F2;
+  --sage-border: #CADFD4;
+  --sage-text: #4C6B5D;
+
+  --gold-bg: #FFFBEF;
+  --gold-border: #F2DFAE;
+  --gold-text: #B88647;
+
+  /* Typography */
+  --heading-font: "Lora", Georgia, serif;
+  --body-font: "DM Sans", system-ui, sans-serif;
+  --accent-font: "Cormorant Garamond", Georgia, serif;
+  --eye-brow-font: "DM Sans", system-ui, sans-serif;
+  --btn-font: "DM Sans", system-ui, sans-serif;
+
+  /* Radius */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Bootstrap Theme Variables */
+  --bs-body-font-family: var(--body-font);
+  --bs-body-color: var(--text-color);
+  --bs-body-bg: var(--bg-page);
+  --bs-heading-color: var(--heading-color);
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--plum-color) transparent;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-page);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--heading-color);
+}
+
+h1 {
+  font-size: clamp(36px, 5vw, 64px);
+}
+
+h2 {
+  font-size: clamp(30px, 3.4vw, 44px);
+}
+
+h3 {
+  font-size: clamp(22px, 2.4vw, 26px);
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* =========================================
+   PARAGRAPHS
+========================================= */
+
+p {
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-color);
+}
+
+/* =========================================
+   COMMON BUTTONS
+   Modifiers:
+   .outline .transparent .cream .white
+   .light-outline .option .active
+========================================= */
+
+.common-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 14px 24px;
+
+  background-color: var(--primary-color);
+  color: var(--text-on-dark);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-pill);
+
+  font-family: var(--btn-font);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+  text-align: center;
+
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.common-btn:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--text-on-dark);
+}
+
+.common-btn a {
+  color: inherit;
+  font-weight: 600;
+}
+
+.common-btn img,
+.common-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Outline */
+
+.common-btn.outline,
+.common-btn.transparent {
+  background-color: transparent;
+  color: var(--burgundy-light);
+  border-color: var(--border-plum);
+  font-weight: 500;
+}
+
+.common-btn.outline:hover,
+.common-btn.transparent:hover {
+  background-color: rgba(75, 36, 71, 0.05);
+  color: var(--burgundy-light);
+  border-color: var(--border-plum);
+}
+
+/* Cream */
+
+.common-btn.cream {
+  background-color: var(--bg-cream);
+  color: var(--burgundy-color);
+  border-color: var(--border-burgundy);
+  font-size: 14px;
+}
+
+.common-btn.cream:hover {
+  background-color: var(--bg-sand);
+  color: var(--burgundy-color);
+  border-color: var(--border-burgundy);
+}
+
+/* White */
+
+.common-btn.white {
+  background-color: var(--bg-white);
+  color: #1E1A22;
+  border-color: transparent;
+}
+
+.common-btn.white:hover {
+  background-color: var(--bg-cream);
+  color: #1E1A22;
+}
+
+/* Light Outline */
+
+/* Light Outline — for dark backgrounds */
+
+.common-btn.light-outline {
+  background: transparent;
+  color: var(--text-on-dark);
+  border: 1px solid var(--border-on-dark);
+  font-weight: 500;
+}
+
+.common-btn.light-outline:hover {
+  background-color: rgba(250, 246, 239, 0.1);
+  color: var(--text-on-dark);
+  border-color: var(--border-on-dark);
+}
+
+/* Segmented Option */
+
+.common-btn.option {
+  min-height: 46px;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: #2B1B1E;
+  border-color: var(--border-form);
+}
+
+.common-btn.option.active {
+  background-color: var(--primary-color);
+  color: #FAF5EC;
+  border-color: var(--primary-color);
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+section {
+  padding: 70px 0;
+  overflow: hidden;
+}
+
+.section-page {
+  background-color: var(--bg-page);
+}
+
+.section-cream {
+  background-color: var(--bg-cream);
+}
+
+.section-sand {
+  background-color: var(--bg-sand);
+}
+
+.section-dark {
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6 {
+  color: var(--text-on-dark);
+}
+
+.section-dark p {
+  color: var(--text-on-dark-muted);
+}
+
+/* =========================================
+   COMMON TITLE
+========================================= */
+
+.common-title h6 {
+  margin-bottom: 8px;
+  font-family: var(--eye-brow-font);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  color: var(--burgundy-color);
+}
+
+.small-title {
+  font-family: var(--eye-brow-font);
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+}
+
+.common-title h1 {
+  font-size: 64px;
+  line-height: 1.3;
+}
+
+.common-title h2 {
+  font-size: 44px;
+  line-height: 1.3;
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--plum-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--plum-dark);
+}
+
+/* =========================================
+   RESPONSIVE — TABLET / SMALL LAPTOP
+========================================= */
+
+@media screen and (max-width: 991px) {
+  section {
+    padding: 60px 0;
+  }
+
+  .common-title h1,
+  .common-title h2 {
+    font-size: 35px;
+  }
+
+  .common-title h1 {
+    line-height: 1.3;
+  }
+
+  .common-title h2 {
+    line-height: 1.3;
+  }
+}
+
+/* =========================================
+   RESPONSIVE — MOBILE
+========================================= */
+
+@media screen and (max-width: 575px) {
+  section {
+    padding: 40px 0;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  h4 {
+    font-size: 19px;
+  }
+
+  h5 {
+    font-size: 17px;
+  }
+
+  h6 {
+    font-size: 15px;
+  }
+
+  .common-title h1,
+  .common-title h2 {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .small-title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .common-btn {
+    min-height: 46px;
+    padding: 12px 20px;
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  .common-btn img,
+  .common-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .common-btn.option {
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+}
+
+
+/* =========================================
+   COMMON BUTTON — MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 575px) {
+  .common-btn {
+    min-height: 44px;
+    padding: 11px 12px;
+    font-size: 14px;
+    line-height: 19px;
+    white-space: nowrap;
+  }
+
+  .common-btn:has(svg) {
+    gap: 7px;
+  }
+}
+
+@media (max-width: 320px) {
+  .common-btn {
+    white-space: normal;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE TYPOGRAPHY — TABLET
+   576px–991px
+========================================= */
+
+@media screen and (min-width: 576px) and (max-width: 991.98px) {
+  body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: clamp(36px, 5vw, 48px);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: clamp(30px, 4vw, 38px);
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: clamp(22px, 2.8vw, 26px);
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 19px;
+    line-height: 1.35;
+  }
+
+  h5 {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  h6 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .common-title h1 {
+    font-size: clamp(36px, 4.5vw, 44px);
+    line-height: 1.25;
+  }
+
+  .common-title h2 {
+    font-size: clamp(30px, 3.8vw, 36px);
+    line-height: 1.3;
+  }
+
+  .common-title h6,
+  .small-title {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE TYPOGRAPHY — MOBILE
+   0–575px
+========================================= */
+
+@media screen and (max-width: 575.98px) {
+  body {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: clamp(30px, 7vw, 36px);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: clamp(26px, 6vw, 30px);
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 21px;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  h5 {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  h6 {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .common-title h1 {
+    font-size: clamp(28px, 6.5vw, 32px);
+    line-height: 1.25;
+  }
+
+  .common-title h2 {
+    font-size: clamp(26px, 6vw, 30px);
+    line-height: 1.3;
+  }
+
+  .common-title h6,
+  .small-title {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.4px;
+  }
+}
+
+
+/* =========================================
+   EXTRA SMALL MOBILE
+   320px and below
+========================================= */
+
+@media screen and (max-width: 320px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2,
+  .common-title h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

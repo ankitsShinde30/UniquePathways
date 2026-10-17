@@ -1,0 +1,261 @@
+/* =========================================
+   SIGNATURE PROGRAMME
+========================================= */
+
+.signature-programme {
+    background: var(--plum-color);
+    padding: 80px 0;
+    color: var(--text-on-dark);
+}
+
+.signature-programme .common-title {
+    margin-bottom: 20px !important;
+}
+
+.signature-programme .common-title h6 {
+    margin-bottom: 8px;
+    color: var(--text-on-dark);
+    font-family: var(--body-font);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.signature-programme .common-title h2 {
+    margin-bottom: 0;
+    color: var(--text-on-dark);
+    font-family: var(--heading-font);
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.signature-programme .common-title p {
+    padding-top: 12px;
+    margin-bottom: 0;
+    color: rgba(250, 246, 239, 0.75);
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.signature-programme img {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+}
+
+/* Programme features */
+
+.signature-programme .programme-feature {
+    height: 100%;
+    padding-top: 20px;
+}
+
+.signature-programme .programme-feature h4 {
+    margin-bottom: 8px;
+    color: var(--text-on-dark);
+    font-family: var(--heading-font);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.signature-programme .programme-feature p {
+    margin-bottom: 0;
+    color: rgba(250, 246, 239, 0.7);
+    font-family: var(--body-font);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+/* Horizontal dividers between feature rows */
+
+.signature-programme .programme-feature-border {
+    border-top: 1px solid rgba(250, 246, 239, 0.2);
+    padding-top: 20px;
+}
+
+/* Buttons */
+
+.signature-programme .programme-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.signature-programme .programme-actions .common-btn {
+    min-height: 52px;
+}
+
+/* =========================================
+   RESPONSIVE — LAPTOP
+========================================= */
+
+@media (max-width: 1199px) {
+    .signature-programme .common-title h2 {
+        font-size: 36px;
+    }
+
+    .signature-programme .programme-feature h4 {
+        font-size: 22px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE — TABLET
+========================================= */
+
+@media (max-width: 991px) {
+    .signature-programme {
+        padding: 50px 0;
+    }
+
+
+    .signature-programme .common-title h2 {
+        font-size: 35px;
+        white-space: normal;
+    }
+
+    .signature-programme .common-title {
+        margin-bottom: 24px !important;
+    }
+
+    .signature-programme .programme-actions {
+        margin-top: 32px;
+    }
+}
+
+
+
+/* =========================================
+   RESPONSIVE — MOBILE
+========================================= */
+
+@media (max-width: 575px) {
+    .signature-programme {
+        padding: 50px 0;
+    }
+
+    .signature-programme>.container {
+        padding-left: 20px;
+        padding-right: 32px;
+    }
+
+    /* .signature-programme>.container>.row {
+        row-gap: 90px !important;
+    } */
+
+    /* Intro and image */
+
+    .signature-programme .common-title {
+        margin-bottom: 0 !important;
+    }
+
+    .signature-programme .common-title h6 {
+        margin-bottom: 8px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .signature-programme .common-title h2 {
+        max-width: 354px;
+        font-size: 32px;
+        line-height: 1.3;
+        white-space: normal;
+    }
+
+    .signature-programme .common-title p {
+        padding-top: 12px;
+        margin-top: 0 !important;
+        font-size: 17px;
+        line-height: 28px;
+    }
+
+    .signature-programme img {
+        width: 100%;
+        border-radius: 24px;
+        margin-top: 40px;
+    }
+
+    /* Spacing between intro and image */
+
+    .signature-programme .col-lg-5>.d-flex {
+        gap: 40px !important;
+    }
+
+    /* Features: retain two columns on mobile */
+
+    .signature-programme .col-lg-7>.row {
+        --bs-gutter-x: 37.9px;
+        --bs-gutter-y: 0;
+        row-gap: 0 !important;
+    }
+
+    .signature-programme .col-lg-7>.row>.col-md-6 {
+        width: 50%;
+        flex: 0 0 50%;
+    }
+
+    .signature-programme .programme-feature {
+        height: 100%;
+        padding-top: 19px;
+    }
+
+    .signature-programme .programme-feature h4 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 28px;
+    }
+
+    .signature-programme .programme-feature p {
+        font-size: 15px;
+        line-height: 26px;
+        color: rgba(250, 246, 239, 0.75);
+        padding-bottom: 20px;
+    }
+
+    /* Dividers across the second row */
+
+    .signature-programme .programme-feature-border {
+        padding-top: 19px;
+        border-top: 1px solid rgba(250, 246, 239, 0.2);
+    }
+
+    /* Buttons */
+
+    .signature-programme .programme-actions {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .signature-programme .programme-actions .common-btn {
+        min-height: 44px;
+        padding: 11px 12px;
+        font-size: 14px;
+        line-height: 19px;
+        white-space: nowrap;
+    }
+
+    .signature-programme .programme-actions .common-btn:first-child {
+        gap: 7px;
+    }
+}
+
+@media (max-width: 320px) {
+    .signature-programme .programme-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+        margin-top: 30px;
+    }
+}
