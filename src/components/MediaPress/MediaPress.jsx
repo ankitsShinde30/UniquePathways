@@ -4,23 +4,28 @@ import "aos/dist/aos.css";
 import Button from "../ui/Button";
 import "./MediaPress.css";
 
+import relationshipAdvice from "../../assets/relationship_advice.png";
+import mindCoach from "../../assets/mind_coach.png";
+import mentalHealth from "../../assets/mental_health.png";
+import grapevineBook from "../../assets/The_Grapevine_Mind_paperback_by_Dr._Arti_S._Kumbhar.png";
+
 const videos = [
   {
     id: 1,
     title: "Relationship Advice",
-    image: "src/assets/relationship_advice.png",
+    image: relationshipAdvice,
     videoId: "z0KswlJltwY",
   },
   {
     id: 2,
     title: "Mind Coach",
-    image: "src/assets/mind_coach.png",
+    image: mindCoach,
     videoId: "ehXR4oJzKiY",
   },
   {
     id: 3,
     title: "Mental Health",
-    image: "src/assets/mental_health.png",
+    image: mentalHealth,
     videoId: "t2LZsN9dLG4",
   },
 ];
@@ -131,7 +136,7 @@ const MediaPress = () => {
         >
           <div className="media-book-image">
             <img
-              src="src/assets/The_Grapevine_Mind_paperback_by_Dr._Arti_S._Kumbhar.png"
+              src={grapevineBook}
               alt="The Grapevine Mind paperback by Dr. Arti S. Kumbhar"
               loading="lazy"
             />

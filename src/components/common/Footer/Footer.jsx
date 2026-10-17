@@ -4,6 +4,8 @@ import "aos/dist/aos.css";
 import Button from "../../ui/Button";
 import "./Footer.css";
 
+import footerlogo from "../../../assets/footerlogo.png";
+
 const exploreLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
@@ -17,7 +19,10 @@ const exploreLinks = [
 
 const serviceLinks = [
   { label: "Psychotherapy & Mental Health Support", href: "#psychotherapy" },
-  { label: "Relationship & Family Counselling", href: "#relationship-counselling" },
+  {
+    label: "Relationship & Family Counselling",
+    href: "#relationship-counselling",
+  },
   { label: "Child & Youth Development", href: "#child-development" },
   { label: "ManoRagini Mindset Programmes", href: "#manoragini" },
   { label: "Mind Frequency Reset", href: "#mind-frequency-reset" },
@@ -40,9 +45,7 @@ const Footer = () => {
         {/* Top call to action */}
         <div className="footer-cta" data-aos="fade-up">
           <div className="footer-cta-content">
-            <h2>
-              Your pathway begins with a single, honest conversation.
-            </h2>
+            <h2>Your pathway begins with a single, honest conversation.</h2>
           </div>
 
           <div className="footer-cta-action">
@@ -64,9 +67,13 @@ const Footer = () => {
             {/* Brand */}
             <div className="col-12 col-md-6 col-lg-4">
               <div className="footer-brand" data-aos="fade-up">
-                <a href="/" className="footer-logo-link" aria-label="Unique Pathway home">
+                <a
+                  href="/"
+                  className="footer-logo-link"
+                  aria-label="Unique Pathway home"
+                >
                   <img
-                    src="src/assets/footerlogo.png"
+                    src={footerlogo}
                     alt="Unique Pathway"
                     className="footer-logo"
                   />
@@ -86,7 +93,11 @@ const Footer = () => {
 
             {/* Explore */}
             <div className="col-6 col-md-6 col-lg-2">
-              <div className="footer-column" data-aos="fade-up" data-aos-delay="100">
+              <div
+                className="footer-column"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
                 <h3>Explore</h3>
                 <ul className="footer-links">
                   {exploreLinks.map((link) => (
@@ -100,7 +111,11 @@ const Footer = () => {
 
             {/* Services */}
             <div className="col-12 col-md-6 col-lg-3">
-              <div className="footer-column" data-aos="fade-up" data-aos-delay="200">
+              <div
+                className="footer-column"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
                 <h3>Services</h3>
                 <ul className="footer-links">
                   {serviceLinks.map((link) => (
@@ -114,7 +129,11 @@ const Footer = () => {
 
             {/* Contact */}
             <div className="col-12 col-md-6 col-lg-3">
-              <div className="footer-column" data-aos="fade-up" data-aos-delay="300">
+              <div
+                className="footer-column"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 <h3>Visit or call</h3>
                 <ul className="footer-links footer-contact-links">
                   <li>Mon – Sat · 10:00 am – 7:00 pm</li>

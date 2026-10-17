@@ -2,31 +2,37 @@ import React from "react";
 import Button from "../ui/Button";
 import "./SpaceSection.css";
 
+import counsellingRoom from "../../assets/counselling-room.png";
+import healingCircle from "../../assets/healing-circle.png";
+import meditating from "../../assets/meditating.png";
+import workshop from "../../assets/workshop.png";
+import awardCeremony from "../../assets/award-ceremony.png";
+
 const spaceImages = [
   {
     id: 1,
-    src: "src/assets/counselling-room.png",
+    src: counsellingRoom,
     alt: "Calm counselling room with plum armchairs and morning light",
     className: "space-gallery__item--main",
   },
   {
     id: 2,
-    src: "src/assets/healing-circle.png",
+    src: healingCircle,
     alt: "Participants seated in a healing circle with eyes closed",
   },
   {
     id: 3,
-    src: "src/assets/meditating.png",
+    src: meditating,
     alt: "Woman meditating beside a window at sunrise",
   },
   {
     id: 4,
-    src: "src/assets/workshop.png",
+    src: workshop,
     alt: "Facilitator leading a corporate resilience workshop",
   },
   {
     id: 5,
-    src: "src/assets/award-ceremony.png",
+    src: awardCeremony,
     alt: "Dr. Arti S. Kumbhar receiving an award on stage",
   },
 ];

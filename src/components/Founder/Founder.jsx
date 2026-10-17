@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../ui/Button";
 import "./Founder.css";
 import "aos/dist/aos.css";
+import founderimg from "../../assets/founder.png";
 
 function Founder() {
   return (
@@ -14,7 +15,7 @@ function Founder() {
             data-aos="fade-right"
           >
             <img
-              src="/src/assets/founder.png"
+              src={founderimg}
               className="founder-image"
               alt="Dr. Arti S. Kumbhar, founder of Unique Pathway"
               loading="lazy"
