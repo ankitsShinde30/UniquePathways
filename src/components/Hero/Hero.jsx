@@ -24,8 +24,8 @@ const Hero = () => {
             <div className="hero__intro" data-aos="fade-up">
               <h1 className="hero__title">
                 Healing that reaches
-                <br className="hero__title-break" />
-                the <em>root</em> of the mind.
+                <br className="hero__title-break" /> the <em>root</em> of the
+                mind.
               </h1>
 
               <p className="hero__description">
