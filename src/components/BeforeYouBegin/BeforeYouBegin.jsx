@@ -63,7 +63,13 @@ const BeforeYouBegin = () => {
               <div className="d-flex flex-wrap gap-3">
                 <Button variant="burgundy-outline">All FAQs</Button>
 
-                <Button variant="gold" showArrow>
+                <Button
+                  variant="gold"
+                  showArrow
+                  onClick={() => {
+                    window.location.href = "#contact";
+                  }}
+                >
                   Ask us directly
                 </Button>
               </div>

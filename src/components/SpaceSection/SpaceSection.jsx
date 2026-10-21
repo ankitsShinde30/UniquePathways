@@ -59,14 +59,7 @@ const SpaceSection = () => {
               data-aos="fade-left"
               data-aos-delay="150"
             >
-              <Button
-                variant="burgundy-outline"
-                onClick={() => {
-                  window.location.href = "/about";
-                }}
-              >
-                View gallery
-              </Button>
+              <Button variant="burgundy-outline">View gallery</Button>
             </div>
           </div>
 

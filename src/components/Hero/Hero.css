@@ -11,7 +11,7 @@
     padding: 109px 0 150px;
     background-color: var(--bg-cream);
     background-image: url("../../assets/Container.png");
-    background-position: top center;
+    background-position: center 38px;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -102,7 +102,7 @@
 @media (min-width: 576px) and (max-width: 991.98px) {
     .hero__background {
         padding: 72px 0 80px;
-        background-position: center center;
+        background-position: center 83px;
         /* background-size: 100% auto; */
     }
 
@@ -156,7 +156,7 @@
     .hero__background {
         padding: 90px 16px 48px;
         /* background-position: center bottom; */
-        background-size: auto 130%;
+        background-size: auto 165%;
         background-repeat: no-repeat;
     }
 

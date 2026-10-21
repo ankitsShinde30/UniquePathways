@@ -96,6 +96,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--plum-color) transparent;
+  scroll-padding-top: 100px;
 }
 
 body {
@@ -123,6 +124,22 @@ input,
 textarea,
 select {
   font-family: inherit;
+}
+
+/* section[id],
+div[id] {
+  scroll-margin-top: 10px;
+} */
+
+@media (max-width: 575px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  /* section[id],
+  div[id] {
+    scroll-margin-top: 80px;
+  } */
 }
 
 /* =========================================
@@ -677,3 +694,24 @@ section {
     font-size: 14px;
   }
 }
+
+.not-found-page {
+  min-height: 65vh;
+  padding: 160px 24px 80px;
+  text-align: center;
+}
+
+.not-found-page h1 {
+  color: #6e1423;
+}
+
+.not-found-page a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #6e1423;
+}
+
+/* Prevent anchor targets from hiding under the fixed navbar. */
+/* [id] {
+  scroll-margin-top: 100px;
+} */

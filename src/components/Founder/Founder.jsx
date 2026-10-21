@@ -6,7 +6,7 @@ import founderimg from "../../assets/founder.png";
 
 function Founder() {
   return (
-    <section className="founder-section">
+    <section className="founder-section" id="founder">
       <div className="container founder-container">
         <div className="row founder-row">
           {/* Founder Image */}

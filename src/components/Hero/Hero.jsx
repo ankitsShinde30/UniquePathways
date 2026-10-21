@@ -44,7 +44,7 @@ const Hero = () => {
                 showArrow
                 className="hero__primary-button"
                 onClick={() => {
-                  window.location.href = "/";
+                  window.location.href = "/about";
                 }}
               >
                 About Dr. Arti Kumbhar
