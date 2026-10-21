@@ -134,7 +134,7 @@ function Navbar() {
             }`}
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav ms-auto me-3 mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0">
               {navItems.map((item) => (
                 <li className="nav-item" key={item.to}>
                   <NavLink
