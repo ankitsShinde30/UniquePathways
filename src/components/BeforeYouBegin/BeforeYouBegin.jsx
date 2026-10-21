@@ -14,22 +14,22 @@ const questions = [
   {
     question: "What happens in the first consultation?",
     answer:
-      "Your first consultation is an opportunity to discuss your concerns, personal goals and current challenges. Together, we explore your needs and identify an appropriate path forward.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quas, veritatis temporibus vel consequatur sit aliquam illum velit quo cumque, debitis modi adipisci cum placeat, maiores facilis? Deserunt, itaque architecto.",
   },
   {
     question: "Do I need a diagnosis or referral to book?",
     answer:
-      "No diagnosis or referral is required to get started. You can book a consultation directly and discuss your concerns with us to understand the support that may be appropriate for you.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quas, veritatis temporibus vel consequatur sit aliquam illum velit quo cumque, debitis modi adipisci cum placeat, maiores facilis? Deserunt, itaque architecto.",
   },
   {
     question: "Do you offer online sessions?",
     answer:
-      "Online sessions may be available depending on your needs and location. Contact us directly to discuss the available options and find a suitable format for your consultation.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quas, veritatis temporibus vel consequatur sit aliquam illum velit quo cumque, debitis modi adipisci cum placeat, maiores facilis? Deserunt, itaque architecto.",
   },
   {
     question: "How many sessions will I need?",
     answer:
-      "The number of sessions depends on your individual goals, concerns and progress. We discuss your needs during the consultation and work together to determine a suitable approach.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quas, veritatis temporibus vel consequatur sit aliquam illum velit quo cumque, debitis modi adipisci cum placeat, maiores facilis? Deserunt, itaque architecto.",
   },
 ];
 

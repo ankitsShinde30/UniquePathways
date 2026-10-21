@@ -71,7 +71,7 @@ function Navbar() {
           id="navbarSupportedContent"
         >
           <ul
-            className="navbar-nav mx-auto mb-2 mb-lg-0"
+            className="navbar-nav ms-auto me-3 mb-2 mb-lg-0"
             onClick={() => setMenuOpen(false)}
           >
             <li className="nav-item">
