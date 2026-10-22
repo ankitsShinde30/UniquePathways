@@ -395,7 +395,7 @@ const BookConsultation = () => {
                   <div className="col-12 col-md-6">
                     <div className="consultation-field">
                       <label htmlFor="consultationEmail">
-                        Email <span className="optional">(optional)</span>
+                        Email <span className="optional">*</span>
                       </label>
                       <input
                         id="consultationEmail"

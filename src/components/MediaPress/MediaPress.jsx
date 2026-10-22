@@ -66,7 +66,9 @@ const MediaPress = () => {
           <Button
             variant="burgundy-outline"
             showArrow
-            onClick={scrollToBook}
+            onClick={() => {
+              window.location.href = "/media";
+            }}
             className="headBtn"
           >
             All media & press

@@ -83,7 +83,13 @@ function Founder() {
                 data-aos="fade-up"
                 data-aos-delay="300"
               >
-                <Button variant="gold" showArrow>
+                <Button
+                  variant="gold"
+                  showArrow
+                  onClick={() => {
+                    window.location.href = "/about";
+                  }}
+                >
                   Read her story
                 </Button>
 

@@ -89,14 +89,9 @@ export default function ClientStories() {
 
               <Button
                 variant="burgundy-outline"
-                onClick={() =>
-                  document
-                    .getElementById("client-stories-slider")
-                    ?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "center",
-                    })
-                }
+                onClick={() => {
+                  window.location.href = "/testimonials";
+                }}
               >
                 More stories
               </Button>
