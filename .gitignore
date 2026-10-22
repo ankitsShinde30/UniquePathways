@@ -28,4 +28,4 @@ dist-ssr
 .env.*
 !.env.example
 
-/config.php
+/backend/config.php
