@@ -11,13 +11,13 @@ import Footer from "./components/common/Footer/Footer.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ServicesPage from "./pages/ServicesPage.jsx";
-// import WhoWeHelpPage from "./pages/WhoWeHelpPage.jsx";
+import WhoWeHelpPage from "./pages/WhoWeHelpPage.jsx";
 // import ProductsPage from "./pages/ProductsPage.jsx";
 // import TestimonialsPage from "./pages/TestimonialsPage.jsx";
 // import MediaPage from "./pages/MediaPage.jsx";
-// import GalleryPage from "./pages/GalleryPage.jsx";
-// import FAQPage from "./pages/FAQPage.jsx";
-// import ContactPage from "./pages/ContactPage.jsx";
+import GalleryPage from "./pages/GalleryPage.jsx";
+import FAQPage from "./pages/FAQPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -60,13 +60,13 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
-          {/* <Route path="/who-we-help" element={<WhoWeHelpPage />} />
-          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/who-we-help" element={<WhoWeHelpPage />} />
+          {/* <Route path="/products" element={<ProductsPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/media" element={<MediaPage />} />
+          <Route path="/media" element={<MediaPage />} /> */}
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/faq" element={<FAQPage />} />
-          <Route path="/contact" element={<ContactPage />} /> */}
+          <Route path="/contact" element={<ContactPage />} />
 
           <Route
             path="*"

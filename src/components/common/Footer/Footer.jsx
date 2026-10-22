@@ -3,18 +3,19 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Button from "../../ui/Button";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 import footerlogo from "../../../assets/footerlogo.png";
 
 const exploreLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Media & Press", href: "#media-press" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Media & Press", href: "/media" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "#contact" },
-  { label: "ManoRagini Programme", href: "#manoragini" },
+  { label: "Contact", href: "/contact" },
+  { label: "ManoRagini Programme", href: "/" },
 ];
 
 const serviceLinks = [
@@ -101,8 +102,8 @@ const Footer = () => {
                 <h3>Explore</h3>
                 <ul className="footer-links">
                   {exploreLinks.map((link) => (
-                    <li key={link.label}>
-                      <a href={link.href}>{link.label}</a>
+                    <li key={link.href}>
+                      <Link to={link.href}>{link.label}</Link>
                     </li>
                   ))}
                 </ul>

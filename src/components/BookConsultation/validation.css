@@ -1,0 +1,33 @@
+.consultation-error {
+  display: block;
+  margin-top: 6px;
+  color: #b42318;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+.consultation-field [aria-invalid="true"] {
+  border-color: #b42318;
+}
+.consultation-form-status {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  line-height: 1.5;
+}
+.consultation-form-status.error {
+  color: #8f1d16;
+  background: #fff0ef;
+  border: 1px solid #f3b5b0;
+}
+.consultation-form-status.success {
+  color: #17663a;
+  background: #edf9f0;
+  border: 1px solid #a8d9b6;
+}
+.consultation-character-count {
+  display: block;
+  margin-top: 4px;
+  text-align: right;
+  color: #777;
+  font-size: 0.8rem;
+}

@@ -3,6 +3,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Button from "../ui/Button";
 import "./BookConsultation.css";
+import "./validation.css";
+
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || "").replace(
+  /\/+$/,
+  "",
+);
+const ENDPOINT = `${API_BASE_URL}/send-consultation.php`;
 
 const initialFormData = {
   concern: "",
@@ -12,6 +19,15 @@ const initialFormData = {
   sessionPreference: "in-person",
   message: "",
 };
+
+const concernOptions = [
+  ["mental-health", "Psychotherapy & Mental Health"],
+  ["relationship", "Relationship & Family Counselling"],
+  ["child-youth", "Child & Youth Development"],
+  ["manoragini", "ManoRagini Mindset Programmes"],
+  ["trauma-healing", "Trauma Healing & Emotional Release"],
+  ["other", "Other"],
+];
 
 const contactDetails = [
   {
@@ -26,15 +42,11 @@ const contactDetails = [
     value: "contact@unique-pathway.com",
     href: "mailto:contact@unique-pathway.com",
   },
-  {
-    type: "hours",
-    label: "Hours",
-    value: "Mon – Sat, 10:00 am – 7:00 pm",
-  },
+  { type: "hours", label: "Hours", value: "Mon – Sat, 10:00 am – 7:00 pm" },
 ];
 
 function ContactIcon({ type }) {
-  if (type === "phone") {
+  if (type === "phone")
     return (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
@@ -51,9 +63,7 @@ function ContactIcon({ type }) {
         />
       </svg>
     );
-  }
-
-  if (type === "email") {
+  if (type === "email")
     return (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <rect
@@ -74,8 +84,6 @@ function ContactIcon({ type }) {
         />
       </svg>
     );
-  }
-
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5" />
@@ -97,7 +105,6 @@ function WhatsAppIcon() {
       height="17"
       viewBox="0 0 17 17"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
       <path
@@ -111,8 +118,57 @@ function WhatsAppIcon() {
   );
 }
 
+const validateField = (name, value) => {
+  const trimmed = value.trim();
+  switch (name) {
+    case "concern":
+      return concernOptions.some(([key]) => key === value)
+        ? ""
+        : "Please select what you need help with.";
+    case "fullName":
+      if (!trimmed) return "Full name is required.";
+      if (trimmed.length < 2 || trimmed.length > 100)
+        return "Name must be between 2 and 100 characters.";
+      if (!/^[\p{L}\p{M} .'-]+$/u.test(trimmed))
+        return "Enter a valid name using letters, spaces, apostrophes, periods, or hyphens.";
+      return "";
+    case "phone": {
+      if (!trimmed) return "Phone number is required.";
+      const digits = trimmed.replace(/\D/g, "");
+      if (
+        !/^\+?[0-9()\s.-]+$/.test(trimmed) ||
+        digits.length < 10 ||
+        digits.length > 15
+      )
+        return "Enter a valid phone number with 10–15 digits.";
+      return "";
+    }
+    case "email":
+      if (!trimmed) return ""; // Email is optional
+      if (
+        trimmed.length > 100 ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(trimmed)
+      )
+        return "Enter a valid email address.";
+      return "";
+    case "sessionPreference":
+      return ["in-person", "online"].includes(value)
+        ? ""
+        : "Please choose a session preference.";
+    case "message":
+      if (trimmed.length > 1000)
+        return "Message must be 1000 characters or fewer.";
+      return "";
+    default:
+      return "";
+  }
+};
+
 const BookConsultation = () => {
   const [formData, setFormData] = useState(initialFormData);
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -125,50 +181,112 @@ const BookConsultation = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setFormData((previous) => ({
-      ...previous,
-      [name]: value,
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setStatus({ type: "", message: "" });
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(name, value),
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Connect this form to your backend/API to submit consultation requests.
-    console.log("Consultation request:", formData);
+  const handleBlur = (event) => {
+    const { name, value } = event.target;
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const nextErrors = {};
+    Object.keys(initialFormData).forEach((key) => {
+      nextErrors[key] = validateField(key, formData[key]);
+    });
+    setErrors(nextErrors);
+
+    if (Object.values(nextErrors).some(Boolean)) {
+      setStatus({
+        type: "error",
+        message: "Please correct the highlighted fields and try again.",
+      });
+      return;
+    }
+    if (!API_BASE_URL) {
+      setStatus({
+        type: "error",
+        message:
+          "Form is not configured yet. Please contact the website administrator.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatus({ type: "", message: "" });
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) {
+        throw new Error(
+          result?.message ||
+            "Unable to submit your request right now. Please try again.",
+        );
+      }
+      setStatus({
+        type: "success",
+        message:
+          result.message ||
+          "Thank you. Your consultation request has been sent.",
+      });
+      setFormData(initialFormData);
+      setErrors({});
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message:
+          error.message ||
+          "Network error. Please check your connection and try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const fieldError = (name) =>
+    errors[name] ? (
+      <small className="consultation-error" role="alert">
+        {errors[name]}
+      </small>
+    ) : null;
 
   return (
     <section className="book-consultation" id="contact">
       <div className="container">
         <div className="row g-4 g-xl-5 align-items-stretch">
-          {/* Contact information */}
           <div className="col-12 col-lg-5">
             <div className="consultation-intro" data-aos="fade-up">
               <div className="consultation-heading">
                 <span className="consultation-eyebrow">
                   Book a consultation
                 </span>
-
                 <h2>Take the first step on your path.</h2>
-
                 <p>
                   Share a few details and our team will call you within one
                   working day to confirm a time.
                 </p>
               </div>
-
               <div className="consultation-contact-list">
                 {contactDetails.map((detail) => (
                   <div className="consultation-contact-item" key={detail.type}>
                     <span className="consultation-contact-icon">
                       <ContactIcon type={detail.type} />
                     </span>
-
                     <div className="consultation-contact-copy">
                       <span>{detail.label}</span>
-
                       {detail.href ? (
                         <a href={detail.href}>{detail.value}</a>
                       ) : (
@@ -178,7 +296,6 @@ const BookConsultation = () => {
                   </div>
                 ))}
               </div>
-
               <div className="consultation-whatsapp">
                 <a
                   href="https://wa.me/919833963776"
@@ -193,46 +310,47 @@ const BookConsultation = () => {
             </div>
           </div>
 
-          {/* Consultation form */}
           <div className="col-12 col-lg-7">
             <div
               className="consultation-form-card"
               data-aos="fade-up"
               data-aos-delay="150"
             >
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} noValidate>
+                {status.message && (
+                  <div
+                    className={`consultation-form-status ${status.type}`}
+                    role={status.type === "error" ? "alert" : "status"}
+                    aria-live="polite"
+                  >
+                    {status.message}
+                  </div>
+                )}
+
                 <div className="consultation-field">
                   <label htmlFor="consultationConcern">
                     What would you like help with?
                   </label>
-
                   <select
                     id="consultationConcern"
                     name="concern"
                     value={formData.concern}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     required
+                    aria-invalid={Boolean(errors.concern)}
+                    aria-describedby={
+                      errors.concern ? "concern-error" : undefined
+                    }
                   >
-                    <option value="" disabled>
-                      Select a concern
-                    </option>
-                    <option value="mental-health">
-                      Psychotherapy & Mental Health
-                    </option>
-                    <option value="relationship">
-                      Relationship & Family Counselling
-                    </option>
-                    <option value="child-youth">
-                      Child & Youth Development
-                    </option>
-                    <option value="manoragini">
-                      ManoRagini Mindset Programmes
-                    </option>
-                    <option value="trauma-healing">
-                      Trauma Healing & Emotional Release
-                    </option>
-                    <option value="other">Other</option>
+                    <option value="">Select a concern</option>
+                    {concernOptions.map(([value, label]) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))}
                   </select>
+                  {fieldError("concern")}
                 </div>
 
                 <div className="consultation-field">
@@ -243,10 +361,14 @@ const BookConsultation = () => {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="Your name"
                     autoComplete="name"
+                    maxLength={100}
                     required
+                    aria-invalid={Boolean(errors.fullName)}
                   />
+                  {fieldError("fullName")}
                 </div>
 
                 <div className="row g-3">
@@ -259,13 +381,17 @@ const BookConsultation = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+91"
+                        onBlur={handleBlur}
+                        placeholder="+91 98765 43210"
                         autoComplete="tel"
+                        maxLength={20}
+                        inputMode="tel"
                         required
+                        aria-invalid={Boolean(errors.phone)}
                       />
+                      {fieldError("phone")}
                     </div>
                   </div>
-
                   <div className="col-12 col-md-6">
                     <div className="consultation-field">
                       <label htmlFor="consultationEmail">
@@ -277,49 +403,40 @@ const BookConsultation = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         placeholder="you@example.com"
                         autoComplete="email"
+                        maxLength={100}
+                        aria-invalid={Boolean(errors.email)}
                       />
+                      {fieldError("email")}
                     </div>
                   </div>
                 </div>
 
                 <fieldset className="consultation-session-field">
                   <legend>Session preference</legend>
-
                   <div className="consultation-session-options">
-                    <label
-                      className={`consultation-session-option ${
-                        formData.sessionPreference === "in-person"
-                          ? "active"
-                          : ""
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="sessionPreference"
-                        value="in-person"
-                        checked={formData.sessionPreference === "in-person"}
-                        onChange={handleChange}
-                      />
-                      <span>In Person</span>
-                    </label>
-
-                    <label
-                      className={`consultation-session-option ${
-                        formData.sessionPreference === "online" ? "active" : ""
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="sessionPreference"
-                        value="online"
-                        checked={formData.sessionPreference === "online"}
-                        onChange={handleChange}
-                      />
-                      <span>Online</span>
-                    </label>
+                    {["in-person", "online"].map((preference) => (
+                      <label
+                        key={preference}
+                        className={`consultation-session-option ${formData.sessionPreference === preference ? "active" : ""}`}
+                      >
+                        <input
+                          type="radio"
+                          name="sessionPreference"
+                          value={preference}
+                          checked={formData.sessionPreference === preference}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        <span>
+                          {preference === "in-person" ? "In Person" : "Online"}
+                        </span>
+                      </label>
+                    ))}
                   </div>
+                  {fieldError("sessionPreference")}
                 </fieldset>
 
                 <div className="consultation-field consultation-message-field">
@@ -327,22 +444,34 @@ const BookConsultation = () => {
                     Anything you’d like us to know?{" "}
                     <span className="optional">(optional)</span>
                   </label>
-
                   <textarea
                     id="consultationMessage"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="Share as much or as little as you're comfortable with."
                     rows={4}
+                    maxLength={1000}
+                    aria-invalid={Boolean(errors.message)}
                   />
+                  <small className="consultation-character-count">
+                    {formData.message.length}/1000
+                  </small>
+                  {fieldError("message")}
                 </div>
 
                 <div className="consultation-submit">
-                  <Button type="submit" variant="gold" showArrow>
-                    Request my consultation
+                  <Button
+                    type="submit"
+                    variant="gold"
+                    showArrow
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting
+                      ? "Sending request..."
+                      : "Request my consultation"}
                   </Button>
-
                   <p>Your details stay strictly confidential.</p>
                 </div>
               </form>

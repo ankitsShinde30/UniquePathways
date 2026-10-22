@@ -119,9 +119,9 @@
         position: absolute;
         width: 214.44px;
         height: 224.92px;
-        left: 90%;
-        top: 77%;
-        transform: matrix(-0.03, 1, 1, 0.03, 0, 0);
+        left: 87%;
+        top: 80%;
+        /* transform: matrix(-0.03, 1, 1, 0.03, 0, 0); */
         z-index: 5;
         pointer-events: none;
         overflow-x: hidden;
