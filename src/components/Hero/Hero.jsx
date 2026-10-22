@@ -54,10 +54,7 @@ const Hero = () => {
                 variant="burgundy-outline"
                 className="hero__secondary-button"
                 onClick={() => {
-                  document.getElementById("service-section")?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
+                  window.location.href = "/services";
                 }}
               >
                 Explore Services
