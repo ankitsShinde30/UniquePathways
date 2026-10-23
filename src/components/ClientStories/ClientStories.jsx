@@ -111,7 +111,7 @@ export default function ClientStories() {
                 spaceBetween={24}
                 loop={true}
                 autoplay={{
-                  delay: 2000,
+                  delay: 8000,
                   disableOnInteraction: false,
                   pauseOnMouseEnter: true,
                 }}

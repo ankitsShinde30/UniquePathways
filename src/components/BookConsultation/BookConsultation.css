@@ -162,6 +162,7 @@
 .consultation-whatsapp-btn:hover {
     border-color: var(--border-burgundy) !important;
     background: rgba(255, 255, 255, 0.5);
+    color: var(--burgundy-color) !important;
 }
 
 .consultation-whatsapp-btn svg {
@@ -319,10 +320,10 @@
     color: var(--text-on-dark);
 }
 
-.consultation-session-option:focus-within {
+/* .consultation-session-option:focus-within {
     outline: 2px solid var(--primary-color);
     outline-offset: 3px;
-}
+} */
 
 /* Submit */
 

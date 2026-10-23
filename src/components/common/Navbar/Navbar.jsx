@@ -141,6 +141,7 @@ function Navbar() {
                     className={({ isActive }) =>
                       `nav-link ${isActive ? "active" : ""}`
                     }
+                    data-text={item.label}
                     to={item.to}
                     end={item.to === "/"}
                     onClick={() => setMenuOpen(false)}

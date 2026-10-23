@@ -67,6 +67,15 @@
     gap: 16px;
 }
 
+.hero__actions .common-btn.outline {
+    background-color: #f6efe5;
+}
+
+.hero__actions .common-btn.outline:hover {
+    background-color: var(--plum-color);
+}
+
+
 .hero__primary-button,
 .hero__secondary-button {
     white-space: nowrap;
@@ -76,7 +85,7 @@
 .hero__slider-container {
     position: relative;
     z-index: 3;
-    margin-top: -150px;
+    margin-top: -167px;
     /* margin-bottom: 10px; */
 }
 

@@ -85,21 +85,29 @@
 .client-stories__navigation {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 12px;
+    flex: 0 0 auto;
+    width: max-content;
 }
 
 .client-stories__nav-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    box-sizing: border-box;
+
     padding: 0;
-    aspect-ratio: 1;
     border: 1px solid var(--border-plum);
     border-radius: var(--radius-pill);
     background: transparent;
     color: var(--plum-color);
     cursor: pointer;
+
     transition:
         background-color 0.2s ease,
         color 0.2s ease,

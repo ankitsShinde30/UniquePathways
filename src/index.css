@@ -3,8 +3,7 @@
    Design tokens + base + reusable components
 ========================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Manrope:wght@400;500;600;700&display=swap");
 /* =========================================
    ROOT VARIABLES
    Load AFTER Bootstrap CSS
@@ -816,3 +815,117 @@ section {
 /* [id] {
   scroll-margin-top: 100px;
 } */
+
+
+/* =========================================
+   GLOBAL TYPOGRAPHY RENDER ADJUSTMENT
+   Adjust text size without scaling the layout
+========================================= */
+
+:root {
+  --global-text-scale: 0.95;
+}
+
+/* Base text */
+body {
+  font-size: calc(16px * var(--global-text-scale));
+}
+
+/* Global headings */
+h1 {
+  font-size: calc(clamp(36px, 5vw, 64px) * var(--global-text-scale));
+}
+
+h2 {
+  font-size: calc(clamp(30px, 3.4vw, 44px) * var(--global-text-scale));
+}
+
+h3 {
+  font-size: calc(clamp(22px, 2.4vw, 26px) * var(--global-text-scale));
+}
+
+h4 {
+  font-size: calc(20px * var(--global-text-scale));
+}
+
+h5 {
+  font-size: calc(18px * var(--global-text-scale));
+}
+
+h6 {
+  font-size: calc(16px * var(--global-text-scale));
+}
+
+/* Paragraphs */
+p {
+  font-size: calc(16px * var(--global-text-scale));
+}
+
+/* Shared titles */
+.common-title h1 {
+  font-size: calc(64px * var(--global-text-scale));
+}
+
+.common-title h2 {
+  font-size: calc(44px * var(--global-text-scale));
+}
+
+.common-title h6,
+.small-title {
+  font-size: calc(14px * var(--global-text-scale));
+}
+
+/* Shared buttons */
+.common-btn {
+  font-size: calc(15px * var(--global-text-scale));
+}
+
+/* Mobile adjustments */
+@media (max-width: 575.98px) {
+
+  body,
+  p {
+    font-size: calc(14px * var(--global-text-scale));
+  }
+
+  h1 {
+    font-size: calc(clamp(30px, 7vw, 36px) * var(--global-text-scale));
+  }
+
+  h2 {
+    font-size: calc(clamp(26px, 6vw, 30px) * var(--global-text-scale));
+  }
+
+  h3 {
+    font-size: calc(21px * var(--global-text-scale));
+  }
+
+  h4 {
+    font-size: calc(18px * var(--global-text-scale));
+  }
+
+  h5 {
+    font-size: calc(16px * var(--global-text-scale));
+  }
+
+  h6 {
+    font-size: calc(14px * var(--global-text-scale));
+  }
+
+  .common-title h1 {
+    font-size: calc(clamp(28px, 6.5vw, 32px) * var(--global-text-scale));
+  }
+
+  .common-title h2 {
+    font-size: calc(clamp(26px, 6vw, 30px) * var(--global-text-scale));
+  }
+
+  .common-title h6,
+  .small-title {
+    font-size: calc(12px * var(--global-text-scale));
+  }
+
+  .common-btn {
+    font-size: calc(14px * var(--global-text-scale));
+  }
+}

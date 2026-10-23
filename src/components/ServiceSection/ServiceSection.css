@@ -98,10 +98,10 @@
 }
 
 .service-section__cards {
-    --bs-gutter-x: 30px;
+    --bs-gutter-x: 60px;
     --bs-gutter-y: 30px;
 
-    width: 100%;
+    /* width: 100%; */
     align-items: stretch;
     margin-top: 0;
 }
@@ -262,7 +262,7 @@
 
 @media (max-width: 1399.98px) {
     .service-section__cards {
-        --bs-gutter-x: 24px;
+        --bs-gutter-x: 60px;
     }
 
     .service-card {
@@ -288,7 +288,7 @@
     }
 
     .service-section__cards {
-        --bs-gutter-x: 24px;
+        --bs-gutter-x: 40px;
         --bs-gutter-y: 24px;
     }
 

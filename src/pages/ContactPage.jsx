@@ -5,9 +5,8 @@ function ContactPage() {
   return (
     <>
       <section>
-        <BeforeYouBegin />
+        <BookConsultation />
       </section>
-      <BookConsultation />
     </>
   );
 }
